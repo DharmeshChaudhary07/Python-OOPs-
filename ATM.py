@@ -88,5 +88,4 @@ atm1.function()
     It's how deposit() knows to change atm1.balance specifically, not some other atm object's balance.
     You never pass self in yourself — Python does it automatically, based on which object called the method.
 
-
 '''
