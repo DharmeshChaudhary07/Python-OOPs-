@@ -62,17 +62,17 @@
 # #################################################################################################################################
 
 
-# class Car:
-#     def __init__(self):
-#         print("Hello, I am a constructor")
+class Car:
+    def __init__(self):
+        print("Hello, I am a constructor")
 
-#     def menu(self):
-#         print("1. Start Engine")
-#         print("1. Stop Engine")
+    def menu(self):
+        print("1. Start Engine")
+        print("1. Stop Engine")
 
 
 
-# car1 = Car()    # here car()-> is a class and car1 is an object of the class car 
+car1 = Car()    # here car()-> is a class and car1 is an object of the class car 
 
 # # Car() — calling it with parentheses creates a brand new object (this is called instantiation). 
 # # This automatically triggers __init__, which runs and sets up that object's own data (in your example, just prints the message; in 
@@ -80,43 +80,43 @@
 
 
 
-# car1.menu()
+car1.menu()
 
 # # this calls the menu method, and Python automatically knows to run it on car1 specifically (that's what self refers to inside the method). 
 # # If you had car2 = Car() as well, car2.menu() would run independently on car2's own data, not car1's.
 
+
 # ###############################################
 
+class atm:
+    def __init__(self):
+        self.pin = ''
+        self.balance = 0
 
-# class atm:
-#     def __init__(self):
-#         self.pin = ''
-#         self.balance = 0
+    def func(self):
 
-#     def func(self):
+        user_input = input(''' Enter your choice:
+                            1. Create Pin
+                            2. Check Balance
+                            3. Deposit
+                            4. Withdraw
+                            5. Exit          
+                        ''')
+        if user_input == '1':
+            print("Create Pin")
+        elif user_input == '2':
+            print("Check Balance")
+        elif user_input == '3':
+            print("Deposit")
+        elif user_input == '4':
+            print("Withdraw")
+        elif user_input == '5':
+            print("Exit")
+        else:
+            print("Invalid Input")
 
-#         user_input = input(''' Enter your choice:
-#                             1. Create Pin
-#                             2. Check Balance
-#                             3. Deposit
-#                             4. Withdraw
-#                             5. Exit          
-#                         ''')
-#         if user_input == '1':
-#             print("Create Pin")
-#         elif user_input == '2':
-#             print("Check Balance")
-#         elif user_input == '3':
-#             print("Deposit")
-#         elif user_input == '4':
-#             print("Withdraw")
-#         elif user_input == '5':
-#             print("Exit")
-#         else:
-#             print("Invalid Input")
-
-# rich = atm()
-# rich.func()
+rich = atm()
+rich.func()
 
 ###############################################
 
