@@ -2,6 +2,7 @@
 
 ####################################################### Creating own data types ########################################################
 
+# Aim to build a datatype:
 # There is no datatype for handing fractions in python, even no langauge has a data type to handle fractions. 
 
 '''
@@ -79,7 +80,7 @@ print(l)
 
 ########################################################
 
-# --- Additon ---
+# --- Additon, Subtraction, multiplication, division ---
 
 class fraction:
 
@@ -100,10 +101,33 @@ class fraction:
 
         return "{}/{}".format(temp_num, temp_den)
 
+    def __sub__(self, other):
+        temp_num = self.n * other.d - self.d * other.n
+        temp_den = self.d * other.d
 
+        return "{}/{}".format(temp_num, temp_den)
+
+    def __mul__(self, other):
+        temp_num = self.n * other.n
+        temp_den = self.d * other.d
+
+        return "{}/{}".format(temp_num, temp_den)
+
+    def __truediv__(self, other):
+        temp_num = self.n * other.d
+        temp_den = self.d * other.n
+
+        return "{}/{}".format(temp_num, temp_den)
+
+    
 x = fraction(4, 5)
 y = fraction(5, 6)
 
-print(x + y)      # -> if __add__ magic method not used then,  TypeError: unsupported operand type(s) for +: 'fraction' and 'fraction'
+ # -> if __add__ magic method not used,  TypeError: unsupported operand type(s) for +: 'fraction' and 'fraction'
 
+
+print(x + y) 
+print(x - y)
+print(x * y)
+print(x / y)
 # ---------------------------------------------------------------------------
