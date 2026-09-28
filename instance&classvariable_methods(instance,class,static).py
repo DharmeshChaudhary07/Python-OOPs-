@@ -31,20 +31,51 @@ print(d1.species)          # Updated — affects all instances
 # Instance Method: An Instance Method is a function defined inside a class that operates directly on an individual object (instance) of that class.
 # It automatically receives self as its first parameter, which points directly to the specific object calling the method.
 # Capability: It has full access to read and modify both the object's unique instance variables and the class's shared variables.
-'Instance method: Making a specific pizza for a customer (adds toppings to that specific pizza).'
+
+
+# Instance methods (the normal kind — take self
+                  
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):              # instance method
+        print(f"{self.name} says Woof!")
+
+Dog("Rex").bark()
+
 
 
 # Class Method: A Class Method is a function bound to the class itself, rather than any individual object. 
 # It is marked with the @classmethod decorator and automatically receives cls as its first parameter, which points to the class blueprint.
 # Capability: It can read and modify variables that belong to the class as a whole, affecting all instances simultaneously. 
 # It cannot access object-specific instance variables because it doesn't know which individual object is calling it.
-'Class method: Changing the name of the whole franchise (affects every shop and pizza).'
+
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):
+        age = 2026 - birth_year
+        return cls(name, age)     # calls __init__ under the hood
+
+d = Dog.from_birth_year("Rex", 2022)
+
 
 
 # static Method: A Static Method is a standard utility function that is logically grouped inside a class but remains completely isolated from the class and 
 # its instances. It is marked with the @staticmethod decorator and does not receive self or cls as an automatic first parameter.
 # Capability: It acts like a regular independent function. It cannot read or modify either the object's instance variables or the class's variables.
-'Static Method: Checking if the weather is good for delivery (doesnt change the pizza or the shop name, its just helpful info).'
+
+class MathHelper:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+MathHelper.add(3, 4)   # 7 — no object needed at all
+
 
 ########################################################################################################################################
 
@@ -81,13 +112,15 @@ my_pizza = PizzaShop("Pepperoni")
 your_pizza = PizzaShop("Cheese")
 
 
+'Instance method: Making a specific pizza for a customer (adds toppings to that specific pizza).'
 my_pizza.describe_pizza()  # instance method  # prints ->  This is a Pepperoni pizza from Mario's Pizza.
 
 
+'Class method: Changing the name of the whole franchise (affects every shop and pizza).'
 PizzaShop.rename_shop("Mega Pizza")
 your_pizza.describe_pizza()  # class method # prints -> This is a Cheese pizza from Mega Pizza.
 
-
+'Static Method: Checking if the weather is good for delivery (doesnt change the pizza or the shop name, its just helpful info).'
 print(PizzaShop.is_pizza_healthy("Salad"))  # static method # prints -> False
 
 --------------------------------------------------------------------------
