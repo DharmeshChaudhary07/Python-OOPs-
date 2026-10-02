@@ -174,9 +174,6 @@ emp3.emply()
 # Create an employee using Employee.from_string("Rahul-50000").
 # Concepts: @classmethod as constructor, @staticmethod
 
-Hint: Use text.split("-") to get name and salary. Convert salary with int(). The class method ends with return cls(name, salary).
- The static method has no self and no cls.
-
 
 class employerr:
 
