@@ -9,34 +9,53 @@
 
 
 # 1. Temperature Converter
-# Build Temperature with celsius. Add methods to_fahrenheit() and to_kelvin() that return the converted values (don't store them). Create one object, call both methods, and trace what happens from object creation to both method calls finishing.
+# Build Temperature with celsius. Add methods to_fahrenheit() and to_kelvin() that return the converted values (don't store them). 
+# Create one object, call both methods, and trace what happens from object creation to both method calls finishing.
 # Concepts: __init__, return values, basic math
-# Hint: Fahrenheit = (celsius * 9/5) + 32. Kelvin = celsius + 273.15.
 
-class Temperature:
-    def __init__(self, celsius):
-        self.celsius = celsius
+# class Temperature:
+#     def __init__(self, celsius):
+#         self.celsius = celsius
 
-    def to_fahrenheit(self):
-        return self.celsius * 9/5
+#     def to_fahrenheit(self):
+#         return self.celsius * 9/5
 
-    def to_kelvin(self):
-        return self.celsius + 273.15
+#     def to_kelvin(self):
+#         return self.celsius + 273.15
 
-temp = Temperature(57)
-print(temp.to_fahrenheit())
-print(temp.to_kelvin())
+# temp = Temperature(57)
+# print(temp.to_fahrenheit())
+# print(temp.to_kelvin())
 
 # # -------------------------------------------------------------------------------------
 
 
 # 2. Inventory Item with Validation
-# Build Item with private __quantity. Add a quantity property (getter + setter) where the setter rejects negative numbers. Add sell(amount) that reduces quantity, but raises ValueError if amount > quantity. Create one item, sell some stock successfully, then try to oversell and watch it raise. Trace both calls.
-# Concepts: property, setter validation, raise
-# Hint: sell should use self.quantity (through the property) to read and self.quantity = ... to write, so validation always applies — don't touch self.__quantity directly outside the property.
+# Build Item with private __quantity. Add a quantity property (getter + setter) where the setter rejects negative numbers.
+#  Add sell(amount) that reduces quantity, but raises ValueError if amount > quantity. Create one item, sell some stock successfully, 
 
-class Item:
-    
+
+
+# class Item:
+#     def __init__(self, quantity):
+#         self.__quantity = quantity
+
+#     @property
+#     def quantity(self):
+#         return self.__quantity
+
+#     @quantity.setter
+#     def quantity(self, value):
+#         if value < 0:
+#             print("incorrect item quantity")
+#         self.__quantity = value
+
+# product = Item(45)
+# print(product.quantity)
+
+# product.quantity = 43
+# print(product.quantity)
+
 
 # # -------------------------------------------------------------------------------------
 
@@ -45,6 +64,8 @@ class Item:
 # Build abstract Shape with abstract area(), and a normal (non-abstract) method describe() that prints f"This shape has an area of {self.area()}". Build Circle and Square. Call describe() on each — note that describe() itself never changes, but it calls self.area(), which is different for each child. Trace through one describe() call for Circle, step by step, showing exactly when area() gets called and by what.
 # Concepts: abstraction + polymorphism working together
 # Hint: This is the real "aha" moment of polymorphism — a method defined ONCE in the parent (describe) automatically behaves differently per child, because of the line self.area() inside it.
+
+
 
 # # -------------------------------------------------------------------------------------
 
