@@ -131,28 +131,6 @@
 # Hint: Library keeps self.books = [] and stores Book objects in it. To search or remove, loop through self.books and compare book.title. 
 # Use .lower() on both sides for case-insensitive search.
 
-class Book:
-    def __init__(self, title, author, is_available):
-        self.title = title
-        self.author = author
-        self.is_available = is_available
-
-class library:
-    def __init__(self):
-        self.book = []
-
-    def add_book(self, books):
-        self.book.append(books)
-
-    def remove_book(self, title):
-        self.book.remove(title)
-
-    def search_by_title(self, text):
-        return text in 
-
-
-
-
 # # -------------------------------------------------------------------------------------
 
 
