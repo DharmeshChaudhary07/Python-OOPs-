@@ -13,19 +13,19 @@
 # Create one object, call both methods, and trace what happens from object creation to both method calls finishing.
 # Concepts: __init__, return values, basic math
 
-# class Temperature:
-#     def __init__(self, celsius):
-#         self.celsius = celsius
+class Temperature:
+    def __init__(self, celsius):
+        self.celsius = celsius
 
-#     def to_fahrenheit(self):
-#         return self.celsius * 9/5
+    def to_fahrenheit(self):
+        return self.celsius * 9/5
 
-#     def to_kelvin(self):
-#         return self.celsius + 273.15
+    def to_kelvin(self):
+        return self.celsius + 273.15
 
-# temp = Temperature(57)
-# print(temp.to_fahrenheit())
-# print(temp.to_kelvin())
+temp = Temperature(57)
+print(temp.to_fahrenheit())
+print(temp.to_kelvin())
 
 # # -------------------------------------------------------------------------------------
 
@@ -36,25 +36,25 @@
 
 
 
-# class Item:
-#     def __init__(self, quantity):
-#         self.__quantity = quantity
+class Item:
+    def __init__(self, quantity):
+        self.__quantity = quantity
 
-#     @property
-#     def quantity(self):
-#         return self.__quantity
+    @property
+    def quantity(self):
+        return self.__quantity
 
-#     @quantity.setter
-#     def quantity(self, value):
-#         if value < 0:
-#             print("incorrect item quantity")
-#         self.__quantity = value
+    @quantity.setter
+    def quantity(self, value):
+        if value < 0:
+            print("incorrect item quantity")
+        self.__quantity = value
 
-# product = Item(45)
-# print(product.quantity)
+product = Item(45)
+print(product.quantity)
 
-# product.quantity = 43
-# print(product.quantity)
+product.quantity = 43
+print(product.quantity)
 
 
 # # -------------------------------------------------------------------------------------
@@ -70,34 +70,34 @@
 
 # from abc import ABC, abstractmethod
 
-# class Shape:
-#     @abstractmethod
-#     def area(self):
-#         pass
+class Shape:
+    @abstractmethod
+    def area(self):
+        pass
     
-#     def describe(self):
-#         print (f'This shape has an area of {self.area()}')
+    def describe(self):
+        print (f'This shape has an area of {self.area()}')
 
-# class Circle(Shape):
-#     def __init__(self, radius):
-#         self.radius = radius
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
 
-#     def area(self):
-#         return 3.14 * self.radius ** 2
+    def area(self):
+        return 3.14 * self.radius ** 2
 
-# class Square(Shape):
+class Square(Shape):
 
-#     def __init__(self, a):
-#         self.a = a
+    def __init__(self, a):
+        self.a = a
 
-#     def area(self):
-#         return self.a ** 2
+    def area(self):
+        return self.a ** 2
 
-# area = Circle(6)
-# area.describe()
+area = Circle(6)
+area.describe()
 
-# area = Square(8)
-# area.describe()
+area = Square(8)
+area.describe()
 
 # # -------------------------------------------------------------------------------------
 
@@ -142,12 +142,61 @@ s.summary()
 
 
 # 5. Mini System: Students and a Classroom
-# Build Student (name, private __marks, property with validation 0-100). Build Classroom that has a list of Student objects (composition), with:
-# add_student(student)
+# Build Student (name, private __marks, property with validation 0-100). Build Classroom that has a list of Student objects (composition), 
+# with: add_student(student)
 # average_marks() — loops through students, returns the average
 # topper() — returns the student object with the highest marks
-# Create a classroom with 3 students, call both methods, and trace through topper() specifically: how does it compare students, what does it return, and how do you then print the topper's name from outside?
+# Create a classroom with 3 students, call both methods, and trace through topper() specifically:
+#  how does it compare students, what does it return, and how do you then print the topper's name from outside?
 # Concepts: composition, properties, loops over objects, returning an object (not just a number)
-# Hint: For topper(), loop through self.students, keep track of the "best so far" student object (not just their marks), and return that student object at the end. Outside, you'd then do classroom.topper().name.
+# Hint: For topper(), loop through self.students, keep track of the "best so far" student object (not just their marks),
+#  and return that student object at the end. Outside, you'd then do classroom.topper().name.
 
 # # -------------------------------------------------------------------------------------
+
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    @property
+    def marks(self):
+        return self.__marks
+
+    @marks.setter
+    def marks(self, value):
+        if value > 100 or value < 0:
+            raise ValueError("Invalid marks")
+        self.__marks = value
+
+
+class Classroom:
+
+    def __init__(self):
+        self.student = []
+
+    def add_student(self, student):
+        self.student.append(student)
+
+    def average_marks(self):
+        total_marks = 0
+        for student in self.student:
+            total_marks += student.marks
+        return total_marks / len(self.student)
+
+    def topper(self):
+        best = self.student[0]       
+        for student in self.student:
+            if student.marks > best.marks:
+                best = student
+        return best 
+
+c = Classroom()
+c.add_student(Student("Rahul", 75))
+c.add_student(Student("Priya", ))
+c.add_student(Student("Amit", 60))
+
+print(c.average_marks())
+print(c.topper().name)
+        
+    
